@@ -2,13 +2,15 @@
     {%- block extrafooter %}{% endblock %}
     {%- if show_copyright %}
     {%- if hasdoc('copyright') %}
-    {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright
-    }}.{% endtrans %}
+    {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
     {%- else %}
-    {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
+    &copy; {{ copyright }}.
+    {%- endif %}
+    {%- if theme_last_updated %}
+    {% trans last_updated=theme_last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
     {%- endif %}
     <br>
     {%- endif %}
-    A <a href="https://typlog.com/">typlog</a> <a href="https://github.com/typlog/sphinx-typlog-theme">sphinx theme</a>,
+    A modified <a href="https://github.com/lucays/sphinx-typlog-theme">sphinx-typlog-theme</a> by <a href="https://luca-notebook.readthedocs.io">lucays</a>,
     designed by <a href="https://lepture.com/">Hsiaoming Yang</a>.
 </footer>
