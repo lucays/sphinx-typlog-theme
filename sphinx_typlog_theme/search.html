@@ -1,0 +1,46 @@
+{#
+    basic/search.html
+    ~~~~~~~~~~~~~~~~~
+
+    Template for the search page.
+
+    :copyright: Copyright 2007-2013 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+#}
+{%- extends "layout.html" %}
+{% set title = _('Search') %}
+{%- block scripts %}
+    {{ super() }}
+    <script type="text/javascript" src="{{ pathto('_static/searchtools.js', 1) }}"></script>
+{%- endblock %}
+{% block body %}
+  <noscript>
+  <div id="fallback" class="admonition warning">
+    <p class="last">
+      {% trans trimmed %}Please activate JavaScript to enable the search
+      functionality.{% endtrans %}
+    </p>
+  </div>
+  </noscript>
+
+  {% if search_performed %}
+    {# Translators: Search is a noun, not a verb #}
+    <h2>{{ _('Search Results') }}</h2>
+    <p>只想看精确匹配的搜索结果？请在搜索词前后加上英文引号\ ``''``\ 。如果想搜索『这个回合』，请输入『"这个回合"』。</p>
+    {% if not search_results %}
+      <p>{{ _('没有搜索到任何结果。检查你的搜索词？') }}</p>
+    {% endif %}
+  {% endif %}
+  <div id="search-results">
+  {% if search_results %}
+    <ul>
+    {% for href, caption, context in search_results %}
+      <li>
+        <a href="{{ pathto(item.href) }}">{{ caption }}</a>
+        <p class="context">{{ context|e }}</p>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </div>
+{% endblock %}
