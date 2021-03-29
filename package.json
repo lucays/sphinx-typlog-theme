@@ -5,7 +5,7 @@
   "description": "A sphinx theme",
   "scripts": {
     "build": "npm run build:css && npm run build:js",
-    "build:css": "cleancss src/index.css -o sphinx_typlog_theme/static/typlog.css",
+    "build:css": "cleancss src/index.css -o sphinx_typlog_theme/static/typlog.min.css",
     "build:js": "uglifyjs src/app.js -o sphinx_typlog_theme/js/app.js"
   },
   "author": "",
