@@ -38,6 +38,10 @@ body {
     overflow: auto;
 }
 
+.wy-table-responsive.footnote {
+    display: none;
+}
+
 article,
 aside,
 footer,
